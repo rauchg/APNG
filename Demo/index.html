@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>APNG demo</title>
+    
+    <style type="text/css" media="screen">
+      #divspinner { width: 50px; height: 50px; background: url('images/zoom-spin.png'); }
+      #divspinner2 { width: 50px; height: 50px; background: url('images/zoom-spin-single.png') no-repeat; }
+    </style>
+    
+    <script src="mootools-1.2.1-core-yc.js" type="text/javascript" charset="utf-8"></script>
+    <script src="Class.Occlude.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../Source/APNG.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" charset="utf-8">
+      
+      window.addEvent('load', function(){
+        var img, a, b, c, d;      
+        
+        // new image
+        img = new Element('img', { src: 'images/zoom-spin.png', alt: 'custom image property' });
+        img.inject(document.getElement('h2'), 'after');
+        a = new APNG(img, { useNative: false, frames: 12, endless: false });
+              
+        // existing images
+        b = new APNG('imganimated', { useNative: false, frames: 12, endless: true });
+        
+        // existing div
+        c = new APNG('divspinner', { useNative: false, frames: 12, endless: true, property: 'background-image' });
+        
+        // existing div, single image
+        d = new APNG('divspinner2', { useNative: false, frames: 12, endless: true, property: 'background-position', axis: 'x', interval: [100, 90, 80, 70, 60, 50, 40, 30, 20, 10] } );
+        
+        $('pause-all').addEvent('click', function(){
+          [a,b,c,d].each(function(obj){ obj.pause(); });
+        });
+        
+        $('resume-all').addEvent('click', function(){
+          [a,b,c,d].each(function(obj){ obj.resume(); });
+        });
+      });
+      
+    </script>
+  </head>
+  
+  <body id="index">
+    <h1>APNG Class</h1>
+  
+    <h2>Dinamically inserted IMG element</h2>
+    <p>useNative: false, endless: false, frames: 12, property: src, interval: 100</p>
+    
+    <h2>Pre-existing IMG element</h2>
+    <img id="imganimated" src="images/zoom-spin.png" alt="Spinner" />
+    <p>useNative: false, endless: true, frames: 12, property: src, interval: 100</p>
+    
+    <h2>Pre-existing DIV element</h2>
+    <div id="divspinner"></div>
+    <p>useNative: false, endless: true, frames: 12, property: background-image, interval: 100</p>
+        
+    <h2>Pre-existing DIV element (single image), with per-frame intervals</h2>  
+    <div id="divspinner2"></div>
+    <p>useNative: false, endless: true, frames: 12, property: background-position, axis: x, interval: [100, 90, 80, 70, 60, 50, 40, 30, 20, 10]</p>
+    <p>background image:</p>
+    <p><img src="images/zoom-spin-single.png" alt="Spinner" /></p>
+        
+    <button id="pause-all">Pause all</button>
+    <button id="resume-all">Resume all</button>
+    
+  </body>
+  
+</html>
