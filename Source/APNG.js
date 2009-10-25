@@ -1,12 +1,14 @@
 /*
-Script: APNG.js
-	Animated PNGs, background-image or src based. If background-image is used, background-position transitions are supported. Native APNG fallback for browsers that support it included.
-
-	License:
-		MIT-style license.
-
-	Authors:
-		Guillermo Rauch
+---
+decription: APNG base class
+authors:
+ - Guillermo Rauch
+requires:
+ - core/1.2.1: *
+ - test
+provides:
+ - apng
+...
 */
 
 var APNG = new Class({
