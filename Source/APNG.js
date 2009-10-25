@@ -4,7 +4,8 @@ decription: APNG base class
 authors:
  - Guillermo Rauch
 requires:
- - core/1.2.1: *
+ - {core/1.2.1: *}
+ - {some/1.2.1: [some, other, plugin]}
  - test
 provides:
  - apng
