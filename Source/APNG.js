@@ -4,9 +4,8 @@ decription: APNG base class
 authors:
  - Guillermo Rauch
 requires:
- - {core/1.2.1: *}
- - {some/1.2.1: [some, other, plugin]}
- - test
+ core/1.2.1: '*'
+ more/1.2.1.1: [Class.Occlude]
 provides:
  - apng
 ...
